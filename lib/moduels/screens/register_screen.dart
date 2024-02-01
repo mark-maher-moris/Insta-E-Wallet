@@ -11,15 +11,25 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   late TextEditingController nameController;
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+  late TextEditingController phoneController;
+
   @override
   void initState() {
     super.initState();
     nameController = TextEditingController();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    phoneController = TextEditingController();
   }
 
   @override
   void dispose() {
     nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    phoneController.dispose();
     super.dispose();
   }
 
@@ -38,14 +48,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
             MyTextFeild(
               controller: nameController,
               validator: (val) {},
-              hint: 'Your name ',
+              hint: 'Name',
               type: TextInputType.name,
               prefix: Icons.abc,
             ),
             MyTextFeild(
               controller: nameController,
               validator: (val) {},
-              hint: 'Your name ',
+              hint: 'Email',
+              type: TextInputType.name,
+              prefix: Icons.abc,
+            ),
+            MyTextFeild(
+              controller: nameController,
+              validator: (val) {},
+              hint: 'Phone number',
+              type: TextInputType.name,
+              prefix: Icons.abc,
+            ),
+            MyTextFeild(
+              controller: nameController,
+              validator: (val) {},
+              hint: 'password',
               type: TextInputType.name,
               prefix: Icons.abc,
             )
@@ -63,6 +87,7 @@ class MyTextFeild extends StatelessWidget {
   IconData? prefix;
   bool isPassword;
   String? hint;
+  String? initValu;
   MyTextFeild(
       {super.key,
       required this.controller,
@@ -70,7 +95,8 @@ class MyTextFeild extends StatelessWidget {
       this.type,
       this.hint,
       this.isPassword = false,
-      this.prefix});
+      this.prefix,
+      this.initValu});
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +105,7 @@ class MyTextFeild extends StatelessWidget {
       child: Container(
         height: 60,
         child: TextFormField(
+          initialValue: initValu,
           controller: controller,
           keyboardType: type,
           obscureText: isPassword,
