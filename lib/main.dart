@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_paypal_checkout/flutter_paypal_checkout.dart';
+import 'package:insta_e_wallet/core/style.dart';
 
-import 'consts.dart';
+import 'core/consts.dart';
+import 'moduels/screens/register_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Insta E-Wallet",
-      home: HomePage(),
+      home: RegisterScreen(),
     );
   }
 }
@@ -57,7 +59,7 @@ class HomePage extends StatelessWidget {
                         height: 28,
                       ),
                       Text(
-                        '50  USD',
+                        '50 USD',
                         style: TextStyle(fontSize: 25),
                       ),
                       Text(
@@ -86,15 +88,15 @@ class HomePage extends StatelessWidget {
                 actionCircle(
                     icon: Icons.add_circle_outline_rounded,
                     title: 'Add',
-                    color: Color.fromARGB(255, 138, 255, 142)),
+                    color: ColorPalette.lightGreen),
                 actionCircle(
                     icon: Icons.transform_rounded,
                     title: 'Send',
-                    color: Color.fromARGB(255, 160, 190, 255)),
+                    color: ColorPalette.lightBlue),
                 actionCircle(
                     icon: Icons.transit_enterexit_rounded,
                     title: 'Withdrow',
-                    color: Color.fromARGB(255, 255, 167, 160)),
+                    color: ColorPalette.lightRed),
               ],
             ),
             Divider(),
@@ -122,7 +124,7 @@ class HomePage extends StatelessWidget {
                       SizedBox(
                         width: 20,
                       ),
-                      Icon(Icons.add_box_rounded),
+                      Icon(Icons.add_circle_outline_rounded),
                       Text('20 USD'),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
