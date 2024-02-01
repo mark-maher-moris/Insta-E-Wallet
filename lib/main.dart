@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_paypal_checkout/flutter_paypal_checkout.dart';
 
+import 'consts.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -40,13 +42,19 @@ class HomePage extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  flex: 5,
+                  flex: 6,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Ista E-Wallet',
-                        style: TextStyle(fontSize: 30, color: Colors.black),
+                        'Insta E-Wallet',
+                        style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                            fontFamily: font),
+                      ),
+                      SizedBox(
+                        height: 28,
                       ),
                       Text(
                         '50  USD',
@@ -69,6 +77,9 @@ class HomePage extends StatelessWidget {
                 )
               ],
             ),
+            SizedBox(
+              height: 15,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -77,12 +88,26 @@ class HomePage extends StatelessWidget {
                     title: 'Add',
                     color: Color.fromARGB(255, 138, 255, 142)),
                 actionCircle(
+                    icon: Icons.transform_rounded,
+                    title: 'Send',
+                    color: Color.fromARGB(255, 160, 190, 255)),
+                actionCircle(
                     icon: Icons.transit_enterexit_rounded,
                     title: 'Withdrow',
-                    color: Color.fromARGB(255, 255, 167, 160))
+                    color: Color.fromARGB(255, 255, 167, 160)),
               ],
             ),
             Divider(),
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Transactions',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ),
             Column(
               children: [
                 Container(
@@ -92,7 +117,34 @@ class HomePage extends StatelessWidget {
                       color: const Color.fromARGB(255, 238, 238, 238),
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: Row(
-                    children: [],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Icon(Icons.add_box_rounded),
+                      Text('20 USD'),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '2024/2/5',
+                            style: TextStyle(
+                                color: const Color.fromARGB(255, 87, 87, 87),
+                                fontSize: 10),
+                          ),
+                          Text(
+                            '2:50',
+                            style: TextStyle(
+                                color: const Color.fromARGB(255, 87, 87, 87),
+                                fontSize: 10),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        width: 50,
+                      ),
+                    ],
                   ),
                 )
               ],
@@ -128,7 +180,7 @@ Widget actionCircle(
                   style: TextStyle(
                       //color: const Color.fromARGB(255, 102, 102, 102),
                       color: Colors.white,
-                      fontSize: 16),
+                      fontSize: 14),
                 )
               ],
             ),
