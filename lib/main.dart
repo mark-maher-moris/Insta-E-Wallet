@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_paypal_checkout/flutter_paypal_checkout.dart';
 import 'package:insta_e_wallet/core/style.dart';
+import 'package:insta_e_wallet/moduels/paymob_payment/pre_pay_screen.dart';
 
 import 'core/consts.dart';
 import 'moduels/screens/register_screen.dart';
@@ -232,10 +233,10 @@ Widget addMounySheet() {
                     style: TextStyle(fontSize: 20, color: Colors.blue),
                   ),
                 ),
-                paymentGatewayBox(),
-                paymentGatewayBox(),
-                paymentGatewayBox(),
-                paymentGatewayBox(),
+                paymentGatewayBox(context),
+                paymentGatewayBox(context),
+                paymentGatewayBox(context),
+                paymentGatewayBox(context),
               ],
             ),
           ),
@@ -245,27 +246,33 @@ Widget addMounySheet() {
   );
 }
 
-Widget paymentGatewayBox() {
+Widget paymentGatewayBox(BuildContext context) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-    child: Container(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: [
-            Expanded(flex: 4, child: Text('Pay with Visa')),
-            Expanded(
-              flex: 2,
-              child: Image.network(
-                  'https://upload.wikimedia.org/wikipedia/commons/d/d4/PayMob_Payments.png'),
-            )
-          ],
+    child: InkWell(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => PrePayScreen()));
+      },
+      child: Container(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Row(
+            children: [
+              Expanded(flex: 4, child: Text('Pay with Visa')),
+              Expanded(
+                flex: 2,
+                child: Image.network(
+                    'https://upload.wikimedia.org/wikipedia/commons/d/d4/PayMob_Payments.png'),
+              )
+            ],
+          ),
         ),
+        height: 80,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(15))),
       ),
-      height: 80,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(15))),
     ),
   );
 }

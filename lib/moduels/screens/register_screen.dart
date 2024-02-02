@@ -94,7 +94,7 @@ class _RegisterScreenState extends State<RegisterScreen>
 }
 
 class BigBtn extends StatelessWidget {
-  BigBtn({super.key, required this.title, this.onTap});
+  BigBtn({super.key, required this.title,required this.onTap});
   String title;
   final onTap;
   @override
@@ -102,10 +102,7 @@ class BigBtn extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
       child: InkWell(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePage()));
-        },
+        onTap:onTap,
         child: Container(
           height: 60,
           width: double.infinity,
@@ -151,7 +148,9 @@ class Login extends StatelessWidget {
         ),
         BigBtn(
           title: 'Login',
-          onTap: () {},
+          onTap: () {
+
+          },
         )
       ],
     );
@@ -203,7 +202,10 @@ class CreateAccount extends StatelessWidget {
         ),
         BigBtn(
           title: 'Register',
-          onTap: () {},
+          onTap: () {
+               Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePage()));
+          },
         )
       ],
     );
