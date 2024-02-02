@@ -48,12 +48,8 @@ class HomePage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Insta E-Wallet',
-                        style: TextStyle(
-                            fontSize: 11,
-                            color: Colors.black,
-                            fontFamily: font),
+                      LogoWidget(
+                        size: 11,
                       ),
                       SizedBox(
                         height: 28,
@@ -88,15 +84,22 @@ class HomePage extends StatelessWidget {
                 actionCircle(
                     icon: Icons.add_circle_outline_rounded,
                     title: 'Add',
-                    color: ColorPalette.lightGreen),
+                    color: ColorPalette.lightGreen,
+                    onTap: () {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: ((context) => addMounySheet()));
+                    }),
                 actionCircle(
                     icon: Icons.transform_rounded,
                     title: 'Send',
-                    color: ColorPalette.lightBlue),
+                    color: ColorPalette.lightBlue,
+                    onTap: () {}),
                 actionCircle(
                     icon: Icons.transit_enterexit_rounded,
                     title: 'Withdrow',
-                    color: ColorPalette.lightRed),
+                    color: ColorPalette.lightRed,
+                    onTap: () {}),
               ],
             ),
             Divider(),
@@ -106,7 +109,7 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'Transactions',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20, color: Colors.grey),
                 ),
               ),
             ),
@@ -159,11 +162,14 @@ class HomePage extends StatelessWidget {
 }
 
 Widget actionCircle(
-    {String? title, required IconData icon, required Color color}) {
+    {String? title,
+    required IconData icon,
+    required Color color,
+    final onTap}) {
   return Padding(
     padding: EdgeInsets.all(10),
     child: InkWell(
-        onTap: () {},
+        onTap: onTap ?? () {},
         child: CircleAvatar(
           radius: 45,
           backgroundColor: color,
@@ -190,6 +196,80 @@ Widget actionCircle(
         )),
   );
 }
+
+class LogoWidget extends StatelessWidget {
+  LogoWidget({super.key, required this.size});
+  double size;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Insta E-Wallet',
+      style: TextStyle(fontSize: size, color: Colors.black, fontFamily: font),
+    );
+  }
+}
+
+Widget addMounySheet() {
+  return DraggableScrollableSheet(
+    minChildSize: 0.8,
+    // snap: true,
+    //expand: true,
+    initialChildSize: 1,
+    maxChildSize: 1,
+    builder: ((context, scrollController) {
+      return ClipRRect(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+        child: Container(
+          color: Color.fromARGB(255, 235, 235, 235),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    'Choose payment method',
+                    style: TextStyle(fontSize: 20, color: Colors.blue),
+                  ),
+                ),
+                paymentGatewayBox(),
+                paymentGatewayBox(),
+                paymentGatewayBox(),
+                paymentGatewayBox(),
+              ],
+            ),
+          ),
+        ),
+      );
+    }),
+  );
+}
+
+Widget paymentGatewayBox() {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    child: Container(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          children: [
+            Expanded(flex: 4, child: Text('Pay with Visa')),
+            Expanded(
+              flex: 2,
+              child: Image.network(
+                  'https://upload.wikimedia.org/wikipedia/commons/d/d4/PayMob_Payments.png'),
+            )
+          ],
+        ),
+      ),
+      height: 80,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(15))),
+    ),
+  );
+}
+
 
 // Aes0cD959sG5IirJVkNqJ_cAi7UdIvcITbTuvsp-ZEWNeavYHOucOFWg_tcfNqZllkF9VAvMkDUHR0ej
 // Secrete
