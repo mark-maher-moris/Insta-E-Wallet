@@ -44,8 +44,8 @@ class PaymentCubit extends Cubit<PaymentStates> {
         },
       ],
     }).then((value) {
-      PaymobConsts.returnedOrderId = value.data['id'];
-      getPaymentToken(
+      PaymobConsts.returnedOrderId = value.data['id'].toString();
+      _getPaymentToken(
           firstName: firstName,
           email: email,
           phoneNumber: phoneNumber,
@@ -57,7 +57,7 @@ class PaymentCubit extends Cubit<PaymentStates> {
     });
   }
 
-  Future<String?> getPaymentToken({
+   Future<String?> _getPaymentToken({
     required String firstName,
     required String email,
     required String phoneNumber,

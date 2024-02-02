@@ -6,13 +6,12 @@ class DioHelper {
   static initDio() {
     dio = Dio(BaseOptions(
         baseUrl: PaymobConsts.baseUrl,
-        headers: {'Content-Type': 'aplication/json'},
+        headers: {'Content-Type': 'application/json'},
         receiveDataWhenStatusError: true));
   }
 
   static Future<Response> postData(
       {required String url, Map<String, dynamic>? data}) async {
     return await dio.post(url, data: data);
-
   }
 }

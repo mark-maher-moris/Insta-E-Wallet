@@ -2,13 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_paypal_checkout/flutter_paypal_checkout.dart';
+import 'package:insta_e_wallet/core/network/dio_healper.dart';
 import 'package:insta_e_wallet/core/style.dart';
 import 'package:insta_e_wallet/moduels/paymob_payment/pre_pay_screen.dart';
 
 import 'core/consts.dart';
 import 'moduels/screens/register_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DioHelper.initDio();
   runApp(const MyApp());
 }
 
